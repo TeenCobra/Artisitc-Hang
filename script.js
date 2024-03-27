@@ -1,21 +1,21 @@
-// Check if the like has already been clicked
-let likeClicked = false;
+document.addEventListener('DOMContentLoaded', function() {
+  var contactButton = document.getElementById('contactus');
+  var registrationForm = document.querySelector('.container2');
+  var cancelButton = document.getElementById('cancel');
 
-// Function to handle the click event on the like box
-function handleLikeClick() {
-  if (!likeClicked) {
-    // Increment the like count by 1
-    let currentLikes = parseInt(localStorage.getItem('likes')) || 0;
-    currentLikes++;
-    
-    // Update the like count displayed on the box
-    document.getElementById('likeCount').innerText = currentLikes;
-    
-    // Store that the like has been clicked
-    likeClicked = true;
-    localStorage.setItem('likes', currentLikes);
-  }
-}
+  // Event listener for the "Contact Us" button
+  contactButton.addEventListener('click', function() {
+    // Hide the contact button
+    contactButton.style.display = 'none';
+    // Show the registration form
+    registrationForm.style.display = 'block';
+  });
 
-// Add event listener to the like box
-document.querySelector('.support-me').addEventListener('click', handleLikeClick);
+  // Event listener for the "Cancel" button
+  cancelButton.addEventListener('click', function() {
+    // Hide the registration form
+    registrationForm.style.display = 'none';
+    // Show the contact button
+    contactButton.style.display = 'block';
+  });
+});
